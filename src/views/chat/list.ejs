@@ -1,0 +1,6 @@
+<% chats.forEach(function(chat, index){ %>
+  <div class="message <%= chat.user !== user ? "friend" : "owner" %>">
+    <span class="date"><%= chat.date %></span>
+    <span class="text"><%= chat.message %></span>
+  </div>
+<% }) %>

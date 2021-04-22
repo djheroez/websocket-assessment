@@ -1,0 +1,7 @@
+<ul class="list-group">         
+  <% contacts.forEach(function(contact, index){ %>
+    <li id="<%= contact.email %>" class="list-group-item">
+      Name: <%= contact.name %>, Email: <%= contact.email %>
+    </li>
+  <% }) %>
+</ul>

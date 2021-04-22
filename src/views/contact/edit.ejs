@@ -1,0 +1,48 @@
+<html>
+  <%- include("../header.ejs") %>
+  <body>
+    <div class="container">
+      <%- include("../navigation.ejs") %>
+      <h1>Edit an existing contact</h1>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#edit" role="tab" aria-controls="edit" aria-selected="true">Edit Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="false">Contact List</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="edit" role="tabpanel" aria-labelledby="new-tab">
+          <form id="find-form">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text" class="form-control" id="email" required>
+            </div>
+            <button id="find-user" type="submit" class="btn btn-primary">Find User</button>
+          </form>
+          <form id="edit-form">
+            <fieldset disabled>
+              <div class="form-group">
+                <label for="new-name">New Name</label>
+                <input type="text" class="form-control" id="new-name">
+              </div>
+              <div class="form-group">
+                <label for="new-email">New Email address</label>
+                <input type="new-email" class="form-control" id="new-email">
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </fieldset>
+          </form>
+        </div>
+        <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="list-tab">
+          <%- include("list.ejs") %>
+        </div>
+      </div>
+    </div>
+    <%- include("../alerts.ejs") %>
+    <script type="text/javascript">
+      WebSocketClient.ContactForm().editFormHandler();
+    </script>
+  </body>
+</html>

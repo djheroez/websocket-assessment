@@ -1,0 +1,64 @@
+<html>
+  <%- include("../header.ejs") %>
+  <body>
+    <div class="container">
+      <%- include("../navigation.ejs") %>
+      <div class="row">
+        <div class="col-sm">
+          <h1>Chat 1</h1>
+          <div id="conversation-1" class="conversation">
+            <%- include("list.ejs", { user: "user_1" }) %>
+          </div>
+          <form id="chat-form-1">
+            <div class="form-row align-items-center">
+              <div class="col-auto">
+                <label class="sr-only" for="inlineFormInput">Name</label>
+                <input type="text" class="form-control mb-2" name="message" placeholder="Type Here...">
+                <input type="hidden" name="user" value="user_1">
+              </div>
+              <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-2" id="submit-form-1">Submit</button>
+              </div>
+              <div class="col-auto">
+                <button type="button" class="btn btn-success mb-2" id="call-1">Call</button>
+              </div>
+              <div class="col-auto">
+                <button type="button" class="btn btn-danger mb-2" id="hangup-1">Hang up</button>
+              </div>
+            </div>
+          </form>
+          <video id="video-1" playsinline autoplay muted width="320" height="240"></video>
+        </div>
+        <div class="col-sm">
+          <h1>Chat 2</h1>
+          <div id="conversation-2" class="conversation">
+            <%- include("list.ejs", { user: "user_2" }) %>
+          </div>
+          <form id="chat-form-2" class="form-inline">
+            <div class="form-row align-items-center">
+              <div class="col-auto">
+                <label class="sr-only" for="inlineFormInput">Name</label>
+                <input type="text" class="form-control mb-2" name="message" placeholder="Type Here...">
+                <input type="hidden" name="user" value="user_2">
+              </div>
+              <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-2" id="submit-form-2">Submit</button>
+              </div>
+              <div class="col-auto">
+                <button type="button" class="btn btn-success mb-2" id="call-2">Call</button>
+              </div>
+              <div class="col-auto">
+                <button type="button" class="btn btn-danger mb-2" id="hangup-2">Hang up</button>
+              </div>
+            </div>
+          </form>
+          <video id="video-2" playsinline autoplay muted width="320" height="240"></video>
+        </div>
+      </div>
+    </div>
+    <%- include("message.ejs") %>
+    <script type="text/javascript">
+      WebSocketClient.ChatForm().chatFormHandler();
+    </script>
+  </body>
+</html>
