@@ -15,5 +15,5 @@ export const getChat = async (request, response) => {
 
   const chats = await chat.list();
 
-  response.render("chat/index", { chats })
+  response.render("chat/index", { chats });
 };

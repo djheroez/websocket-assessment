@@ -4,7 +4,7 @@ import ChatHandler from "./chat-handler";
 import SignalingHandler from "./signaling-handler";
 
 export default type => {
-  switch(type) {
+  switch (type) {
     case MESSAGE_TYPES.CREATE_CONTACT:
       return ContactHandler.createContact;
     case MESSAGE_TYPES.DELETE_CONTACT:

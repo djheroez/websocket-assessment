@@ -6,7 +6,7 @@ import { showError, showSuccess } from "./alerts";
 import { renderContacts, setNewContactFields } from "./utils";
 
 const newFormHandler = () => {
-   jq("form").on("submit", event => {
+  jq("form").on("submit", event => {
     event.preventDefault();
 
     const name = jq("#name").val();
@@ -16,7 +16,7 @@ const newFormHandler = () => {
       JSON.stringify({ type: "create_contact", data: { name, email } })
     );
   });
-}
+};
 
 const editFormHandler = () => {
   jq("form#find-form").on("submit", event => {
@@ -40,10 +40,10 @@ const editFormHandler = () => {
       JSON.stringify({ type: "update_contact", contact, data: { name, email } })
     );
   });
-}
+};
 
 const deleteFormHandler = () => {
-   jq("form").on("submit", event => {
+  jq("form").on("submit", event => {
     event.preventDefault();
 
     const contact = jq("#email").val();
@@ -52,27 +52,31 @@ const deleteFormHandler = () => {
       JSON.stringify({ type: "delete_contact", contact })
     );
   });
-}
+};
 
 const messageHandler = message => {
   if (message.status === "success") {
-    switch(message.type) {
+    switch (message.type) {
       case MESSAGE_TYPES.CREATE_CONTACT:
       case MESSAGE_TYPES.UPDATE_CONTACT:
-      case MESSAGE_TYPES.DELETE_CONTACT: {
-        showSuccess("Changes saved successfully");
-        renderContacts();
-      } break;
-      case MESSAGE_TYPES.GET_CONTACT: {
-        setNewContactFields(message.data);
-      } break;
+      case MESSAGE_TYPES.DELETE_CONTACT:
+        {
+          showSuccess("Changes saved successfully");
+          renderContacts();
+        }
+        break;
+      case MESSAGE_TYPES.GET_CONTACT:
+        {
+          setNewContactFields(message.data);
+        }
+        break;
       default:
         return null;
     }
   } else {
     showError("An error was found");
   }
-}
+};
 
 export default () => ({
   deleteFormHandler,

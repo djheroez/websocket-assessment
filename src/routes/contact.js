@@ -10,10 +10,10 @@ import {
 export default () => {
   const router = express.Router();
 
-  router.get("/", getContacts)
-  router.get("/new", newContact)
-  router.get("/edit", editContact)
-  router.get("/delete", deleteContact)
+  router.get("/", getContacts);
+  router.get("/new", newContact);
+  router.get("/edit", editContact);
+  router.get("/delete", deleteContact);
 
   return router;
 };

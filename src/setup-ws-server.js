@@ -1,4 +1,5 @@
 import http from "http";
+
 import WebSocket from "ws";
 
 import { handlerResolver, messageParser } from "./message-handlers";
@@ -13,8 +14,10 @@ export default app => {
 
     ws.on("message", message => {
       const messageData = messageParser(message);
+
       if (typeof messageData === "object") {
-        const handler = handlerResolver(messageData.type)
+        const handler = handlerResolver(messageData.type);
+
         if (handler) {
           handler(ws, messageData);
         } else {
@@ -29,4 +32,4 @@ export default app => {
   server.listen(process.env.PORT || 8999, () => {
     console.log(`Server started on port ${server.address().port}`);
   });
-}
+};

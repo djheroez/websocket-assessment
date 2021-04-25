@@ -8,7 +8,11 @@ const createContact = async (websocket, message) => {
   const success = await contactModel.add(message.data);
 
   websocket.send(
-    JSON.stringify({ type: MESSAGE_TYPES.CREATE_CONTACT, status: "success", data: {} })
+    JSON.stringify({
+      type: MESSAGE_TYPES.CREATE_CONTACT,
+      status: "success",
+      data: {}
+    })
   );
 };
 
@@ -47,9 +51,9 @@ const deleteContact = async (websocket, message) => {
   );
 };
 
-export default ({ 
+export default {
   createContact,
   getContact,
   updateContact,
   deleteContact
-});
+};

@@ -1,8 +1,7 @@
-
 import express from "express";
 
 import SetupRedisClient from "./setup-redis-client";
-import { BaseRouter, ContactRouter , ChatRouter } from "./routes";
+import { BaseRouter, ContactRouter, ChatRouter } from "./routes";
 
 export default () => {
   const app = express();
@@ -22,9 +21,9 @@ export default () => {
   app.use("/", baseRouter);
   app.use("/contacts", contactRouter);
   app.use("/chats", chatRouter);
-  app.use(express.static(`${__dirname}/public`))
+  app.use(express.static(`${__dirname}/public`));
 
   app.listen(port);
 
   return app;
-}
+};

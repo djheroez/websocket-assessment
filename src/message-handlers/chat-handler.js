@@ -10,8 +10,12 @@ const addChat = async (websocket, message) => {
   const result = await chatModel.add(messageData);
 
   websocket.send(
-    JSON.stringify({ type: MESSAGE_TYPES.ADD_CHAT, status: "success", data: messageData })
+    JSON.stringify({
+      type: MESSAGE_TYPES.ADD_CHAT,
+      status: "success",
+      data: messageData
+    })
   );
 };
 
-export default ({ addChat });
+export default { addChat };

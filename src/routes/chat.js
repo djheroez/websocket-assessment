@@ -1,9 +1,6 @@
 import express from "express";
 
-import {
-  getChat,
-  getChats
-} from "../controllers/chats-controller";
+import { getChat, getChats } from "../controllers/chats-controller";
 
 export default () => {
   const router = express.Router();

@@ -1,12 +1,13 @@
-import redis from "redis";
 import { promisify } from "util";
+
+import redis from "redis";
 
 const withPromises = client => {
   client.getAsync = promisify(client.get).bind(client);
   client.setAsync = promisify(client.set).bind(client);
 
   return client;
-}
+};
 
 export default () => {
   const client = redis.createClient({

@@ -6,7 +6,9 @@ import ChatForm from "./chat-form";
 import { DEFAULT_WEB_SOCKET_URL } from "./constants";
 
 export default () => {
-  const webSocket = new WebSocket(process.env.WEB_SOCKET_URL || DEFAULT_WEB_SOCKET_URL);
+  const webSocket = new WebSocket(
+    process.env.WEB_SOCKET_URL || DEFAULT_WEB_SOCKET_URL
+  );
   const contactForm = ContactForm();
   const chatForm = ChatForm();
 
@@ -18,7 +20,7 @@ export default () => {
     const message = messageParser(event.data);
 
     if (typeof message === "object") {
-      switch(message.type) {
+      switch (message.type) {
         case MESSAGE_TYPES.CREATE_CONTACT:
         case MESSAGE_TYPES.UPDATE_CONTACT:
         case MESSAGE_TYPES.GET_CONTACT:
@@ -35,7 +37,7 @@ export default () => {
           console.warn("No handler for this message");
       }
     }
-  }
+  };
 
   return webSocket;
 };

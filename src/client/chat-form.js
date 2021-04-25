@@ -24,12 +24,12 @@ const onSubmitForm = (event, jqForm) => {
       JSON.stringify({ type: "add_chat", data: { user, message } })
     );
   }
-}
+};
 
 const toggleCallButtons = (jqButton1, jqButton2) => {
   jqButton1.prop("disabled", !jqButton1.prop("disabled"));
   jqButton2.prop("disabled", !jqButton2.prop("disabled"));
-}
+};
 
 const chatFormHandler = () => {
   const jqForm1 = jq("form#chat-form-1");
@@ -60,29 +60,37 @@ const chatFormHandler = () => {
     hangup();
     toggleCallButtons(jqButtonCall1, jqButtonCall2);
   });
-}
+};
 
 const messageHandler = message => {
   if (message.status === "success") {
-    switch(message.type) {
-      case MESSAGE_TYPES.ADD_CHAT:{
-        renderMessage(message.data);
-      } break;
-      case MESSAGE_TYPES.CALL_OFFER: {
-        callAnswer(message);
-      } break;
-      case MESSAGE_TYPES.CALL_ANSWER: {
-        handleCallAnswer(message);
-      } break;
-      case MESSAGE_TYPES.ICE_CANDIDATE: {
-        handleIceCandidate(message);
-      } break;
+    switch (message.type) {
+      case MESSAGE_TYPES.ADD_CHAT:
+        {
+          renderMessage(message.data);
+        }
+        break;
+      case MESSAGE_TYPES.CALL_OFFER:
+        {
+          callAnswer(message);
+        }
+        break;
+      case MESSAGE_TYPES.CALL_ANSWER:
+        {
+          handleCallAnswer(message);
+        }
+        break;
+      case MESSAGE_TYPES.ICE_CANDIDATE:
+        {
+          handleIceCandidate(message);
+        }
+        break;
       default:
         return null;
     }
   } else {
     showError("An error was found");
   }
-}
+};
 
 export default () => ({ chatFormHandler, messageHandler });
